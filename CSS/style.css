@@ -1,0 +1,89 @@
+*{
+margin: 0;
+padding: 0;
+font-family: 'Josefin Sans', sans-serif;
+}
+
+.hide{
+    display: none;
+}
+.car , .enemy{
+    /* background: red; */
+    width: 50px;
+    height: 90px;
+    position: absolute;
+    bottom: 120px;
+    z-index : 100;
+    background-image: url('/images/Car2.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    /* background-color: white; */
+}
+.line{
+    height: 100px;
+    width: 10px;
+    position: absolute;
+    background-color: white;
+    margin-left : 195px;
+}
+
+.gameArea{
+width : 400px;
+height : 100vh;
+background : #2f3640;
+margin:auto;
+position : relative;
+overflow:hidden;
+border-right: 7px dashed #c8d6e5;
+border-left: 7px dashed #c8d6e5;
+
+}
+
+.score{
+    position: fixed;
+    width: 250px;
+    line-height : 70px;
+    top :10px;
+    left : 40px;
+    background : #10ac84;
+    text-align: center;
+    color:white;
+    font-size: 1.5rem;
+    
+    box-shadow: 0 5px 5px #777;
+
+}
+  .startScreen{
+
+   position:absolute;
+   background-color: #ee5253;
+   left :50%;
+   top : 50%;
+   transform: translate(-50% ,-50%);
+   color:white;
+   z-index: 10000;
+   text-align: center;
+   border :1px solid #ff6b6b;
+   padding:15px;
+   margin:auto;
+   width:50%;
+   cursor:pointer;
+   /* font-family:fantasy; */
+   letter-spacing: 5;
+   font-size: 20px;
+   word-spacing: 3;
+   line-height: 30px;
+   text-transform: uppercase;
+   box-shadow: 0 5px 5px #777;
+
+
+ }
+
+ .carGame{
+
+    width: 100%;
+    height: 100%;
+    background : url('/images/des4.jpg'); 
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+ }
