@@ -1,4 +1,9 @@
 
+window.onload = function () {
+
+     // var audio = document.getElementById("bg_audio");
+     // audio.volume = 1;
+}
 // getting references of our divs
 const score = document.querySelector('.score');
 const startScreen = document.querySelector('.startScreen');
@@ -32,8 +37,25 @@ document.addEventListener('keydown', (e) => { keys[e.key] = true; })
 //  when click on start sceen we start the game
 startScreen.addEventListener('click', Start);
 
+function PlayBGSound() {
+     var audio = document.getElementById("bg_audio");
+     audio.play();
+}
+function StopBGSound() {
+     var audio = document.getElementById("bg_audio");
+     audio.pause();
+     audio.currentTime = 0;
+}
+function PlayCrashSound() {
+     var audio = document.getElementById("crash");
+     audio.play();
+}
+
+
+
 let animation;
 function Start() {
+     PlayBGSound();
      //player now play the game
      player.start = true;
      //hiding start screen
@@ -109,9 +131,9 @@ function GameOver() {
      player.start = false;
      startScreen.classList.remove('hide');
      window.cancelAnimationFrame(animation);
-     SetDifficulty(3.5,2);
+     SetDifficulty(3.5, 2);
      startScreen.innerHTML = "Game Over <br> your final score is  : " + player.score + " <br> Click here to restart the game ";
-
+     StopBGSound();
 }
 
 function SetDifficulty(roadLineSpeed, enemyCarSpeed) {
@@ -144,6 +166,7 @@ function MoveEnemy(car) {
      item.forEach(item => {
 
           if (isCollided(car, item)) {
+               PlayCrashSound()
                GameOver();
                return;
           }
@@ -173,14 +196,23 @@ let vDist = 150;
 function CreateEnemyCar() {
      console.log("create car ");
 
-     for (x = 1; x < 5; x++) {
+     for (x = 1; x < 6; x++) {
           let enemyCar = document.createElement('div');
           enemyCar.setAttribute('class', 'enemy');
-          enemyCar.y = ((x + 1) * vDist) * -1;
+          enemyCar.y = ((x + 1.5) * vDist) * -1;
 
           enemyCar.style.top = enemyCar.y + "px";
           gameArea.appendChild(enemyCar);
-          // enemyCar.style.backgroundColor = "blue"; 
+          if (x == 1)
+               enemyCar.style.backgroundImage = "url('/images/car12.png')";
+          else if (x == 2)
+               enemyCar.style.backgroundImage = "url('/images/car11.png')";
+          else if (x == 3)
+               enemyCar.style.backgroundImage = "url('/images/car10.png')";
+          else if (x == 4)
+               enemyCar.style.backgroundImage = "url('/images/car9.png')";
+          else if (x == 5)
+               enemyCar.style.backgroundImage = "url('/images/car8.png')";
           enemyCar.style.left = Math.floor(Math.random() * 330) + "px";
      }
 }
